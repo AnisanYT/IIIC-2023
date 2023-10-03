@@ -1,0 +1,19 @@
+html,
+body {
+  font-family: "nunito";
+}
+.headerStyle {
+  background-color: #f1713f;
+  margin: 2%;
+  color: #fff;
+  border-radius: 20px;
+  padding: 20px;
+}
+.column {
+  border: 1px solid black;
+  padding: 5px;
+}
+@font-face {
+  font-family: "nunito";
+  src: url(../fonts/static/Nunito-Regular.ttf);
+}
