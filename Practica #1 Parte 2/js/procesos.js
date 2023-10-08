@@ -23,18 +23,21 @@ function aupdateSec() {
 
 function actMonto() {
   var monto = document.getElementById("montocito").getAttribute("data-value");
-  document.getElementById("monto").innerText = monto;
-  document.getElementById("monto").value = monto;
+  document.getElementById("monto").textContent = monto;
+  montoComponent = document.getElementById("monto");
+  //alert("El valor puesto es de: " + monto + "Y su tipo es de: " + typeof(monto))
+  //alert("Vere si lo obtiene con textContent: " + montoComponent.textContent)
 }
 
 function resta() {
-  var montoActual = document.getElementById("monto").value;
-  alert("monto actual: " + montoActual);
+  var montoActual = document.getElementById("monto").textContent; //El monto lo disponible
+  //alert("monto actual: " + montoActual);
   var montoApostado = document.getElementById("montoApostado").value;
-  alert("monto apostado: " + montoApostado);
+  //alert("monto apostado: " + montoApostado);
   var resta = montoActual - montoApostado;
-  montoActual.value = resta;
-  montoActual.innerText = resta;
+  //alert("la resta es de: "+resta)
+  document.getElementById("monto").textContent = resta;
+  document.getElementById("montoApostado").value = "";
 }
 
 function asignaDadoInit() {
@@ -60,21 +63,18 @@ function asignaDadoInit() {
   }
 }
 
-function buildTheTable() {
-  var table = document.getElementById("buildTable");
-  var jsonTable = JSON.parse("../json/buildTable.json");
-  table.innerHTML = "../json/buildTable.json";
-}
-
 function jugar() {
   var apostado = document.getElementById("montoApostado").value;
 
-  var montoDisponible = document.getElementById("monto").value;
+  var montoDisponible = document.getElementById("monto").textContent;
+
+
   imagenUno = document.getElementById("1");
   imagenDos = document.getElementById("2");
   imagenTres = document.getElementById("3");
+
   var aux = 0;
-  if (apostado != "" && apostado <= montoDisponible && boton != 0) {
+  if (apostado != ""  && apostado <= parseInt(montoDisponible) && boton != 0) {
     if (dadosNUmero == 2) {
       for (i = 0; i < dadosNUmero; i++) {
         var numeroRandom = Math.floor(Math.random() * (6 - 1) + 1);
@@ -99,7 +99,7 @@ function jugar() {
         document.getElementById("emojiSad_Happy").innerHTML =
           '<img src= "img/interaccion/cryCat.png" heigth = "200px" width = "200px">';
         document.getElementById("numeroSeleccionado").innerText = "";
-        alert("Apostaste " + boton + " Pero cayó " + aux);
+        //alert("Apostaste " + boton + " Pero cayó " + aux);
         boton = 0;
         document.getElementById("montoApostado").focus();
         var comprobacion = document.getElementById("monto").value;
@@ -113,7 +113,6 @@ function jugar() {
       }
     }
   } else {
-    alert("El valor apostado es: " + apostado);
     alert(
       "Hmm, recuerda. No apuestas mayores del monto disponible y No dejes el espacio vacìo, ademas recuerda apostar un numero."
     );
@@ -126,5 +125,4 @@ function saveNum(event) {
 }
 
 document.addEventListener("DOMContentLoaded", actMonto);
-document.addEventListener("DOMContentLoaded", buildTheTable);
 document.addEventListener("DOMContentLoaded", asignaDadoInit);

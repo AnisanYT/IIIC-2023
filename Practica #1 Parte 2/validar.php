@@ -33,7 +33,7 @@
             echo "<td class= \"border\" style=\"width: 100px; background: #cdbe8b\"> Nombre </td>";
             echo "<td class= \"border\" style=\"width: 400px; background: #fff0c2\">" . $nombre . "</td>";
             echo "<td class= \"border\" style=\"width: 200px; background: #cdbe8b\"> Monto disponible </td>";
-            echo "<td class= text-center \"border\" style=\"width: 200px; background: #fff0c2\"> ₡" . "<p id=\"monto\" value=\"\"> </p>" . "</td>";
+            echo "<td class= text-center \"border\" style=\"width: 200px; background: #fff0c2\"> ₡" . "<p id=\"monto\"> </p>" . "</td>";
             echo "</tr>";
             echo "<tr>";
             echo "<td colspan=\"2\"></td>";
