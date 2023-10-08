@@ -4,7 +4,6 @@
     <?php
         include_once("segmentos/encabezado.inc")
     ?>
-    
 </head>
 <body>
     <div class="container">
@@ -34,6 +33,6 @@
             }
         ?>
     </div>
-    <script src="js/procesos.js"></script>
+    <script src="js/sec.js"></script>
 </body>
 </html>
