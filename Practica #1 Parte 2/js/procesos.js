@@ -7,6 +7,7 @@ var dadosNUmero = document.getElementById("dadosNumero").getAttribute("data-valu
 //var casteo = JSON.parse(jsonArray);
 //var phpArray = eval("<?php echo json_encode($vectorAsociativo); ?>");
 function aupdateSec(){
+    alert("entra al metod");
     var fecha = new Date();
     document.getElementById("hora").innerText = fecha.getHours();
     document.getElementById("minutos").innerText = fecha.getMinutes();
