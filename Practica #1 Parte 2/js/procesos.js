@@ -1,4 +1,5 @@
 var contador = 0;
+var montoEnPrincipio = document.getElementById("montoApostado").textContent;
 var jsonArray = document.getElementById("json").value;
 var obtieneDatos = JSON.parse(jsonArray);
 var boton = 0;
@@ -91,10 +92,30 @@ function jugar() {
             '" heigth = "200px" width = "200px">';
         }
       }
-      if (boton == aux) {
+      if (boton == aux) { //aux
+        win++;
         document.getElementById("emojiSad_Happy").innerHTML =
           '<img src= "img/interaccion/happyCat.webp" heigth = "200px" width = "200px">';
+        var apuesta = document.getElementById("montoApostado").value;
+        var disponibles = document.getElementById("monto").textContent;
+        var suma = ((apuesta*2) + parseInt(disponibles) );
+        document.getElementById("monto").textContent = suma;
+        document.getElementById("montoApostado").value = "";
+        document.getElementById("numeroSeleccionado").innerText = "";
+        document.getElementById("montoApostado").focus();
+        if (win == 3){
+          var montoFinal = document.getElementById("monto").textContent;
+          if (montoFinal > montoEnPrincipio){
+            alert("Eres un ganador!")
+            window.location.href = "index.php"
+          } else if(montoEnPrincipio == montoFinal) {
+            alert("Te salvaste...")
+          } else if (montoFinal < montoEnPrincipio){
+            alert("No deberias de jugar... Retirate")
+          }
+        }
       } else {
+        win = 0;
         resta();
         document.getElementById("emojiSad_Happy").innerHTML =
           '<img src= "img/interaccion/cryCat.png" heigth = "200px" width = "200px">';
@@ -102,8 +123,69 @@ function jugar() {
         //alert("Apostaste " + boton + " Pero cayó " + aux);
         boton = 0;
         document.getElementById("montoApostado").focus();
-        var comprobacion = document.getElementById("monto").value;
-        if (comprobacion === 0) {
+        var comprobacion = document.getElementById("monto").textContent;
+        if (comprobacion == 0) {
+          alert(
+            "Lo perdiste todo... No vuelvas a jugar!\n" +
+              "Serás redireccionado a la página principal."
+          );
+          window.location.href = "index.php";
+        }
+      }
+    } else {
+      for (i = 0; i < dadosNUmero; i++) {
+        var numeroRandom = Math.floor(Math.random() * (6 - 1) + 1);
+        aux += numeroRandom;
+        if (i == 0) {
+          imagenUno.innerHTML =
+            '<img src="' +
+            obtieneDatos[numeroRandom] +
+            '" heigth = "200px" width = "200px">';
+        } else if(i == 2) {
+          imagenDos.innerHTML =
+            '<img src="' +
+            obtieneDatos[numeroRandom] +
+            '" heigth = "200px" width = "200px">';
+        } else {
+          imagenTres.innerHTML =
+            '<img src="' +
+            obtieneDatos[numeroRandom] +
+            '" heigth = "200px" width = "200px">';
+        }
+      }
+      if (boton == aux) { //aux
+        win++;
+        document.getElementById("emojiSad_Happy").innerHTML =
+          '<img src= "img/interaccion/happyCat.webp" heigth = "200px" width = "200px">';
+        var apuesta = document.getElementById("montoApostado").value;
+        var disponibles = document.getElementById("monto").textContent;
+        var suma = ((apuesta*2) + parseInt(disponibles) );
+        document.getElementById("monto").textContent = suma;
+        document.getElementById("montoApostado").value = "";
+        document.getElementById("numeroSeleccionado").innerText = "";
+        document.getElementById("montoApostado").focus();
+        if (win == 3){
+          var montoFinal = document.getElementById("monto").textContent;
+          if (montoFinal > montoEnPrincipio){
+            alert("Eres un ganador!")
+            window.location.href = "index.php"
+          } else if(montoEnPrincipio == montoFinal) {
+            alert("Te salvaste...")
+          } else if (montoFinal < montoEnPrincipio){
+            alert("No deberias de jugar... Retirate")
+          }
+        }
+      } else {
+        win = 0;
+        resta();
+        document.getElementById("emojiSad_Happy").innerHTML =
+          '<img src= "img/interaccion/cryCat.png" heigth = "200px" width = "200px">';
+        document.getElementById("numeroSeleccionado").innerText = "";
+        //alert("Apostaste " + boton + " Pero cayó " + aux);
+        boton = 0;
+        document.getElementById("montoApostado").focus();
+        var comprobacion = document.getElementById("monto").textContent;
+        if (comprobacion == 0) {
           alert(
             "Lo perdiste todo... No vuelvas a jugar!\n" +
               "Serás redireccionado a la página principal."
